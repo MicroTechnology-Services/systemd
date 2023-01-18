@@ -277,12 +277,13 @@ int config_parse_ipv4ll_address(
                 void *userdata) {
 
         union in_addr_union a;
-        struct in_addr *ipv4ll_address = ASSERT_PTR(data);
+        struct in_addr *ipv4ll_address = data;
         int r;
 
         assert(filename);
         assert(lvalue);
         assert(rvalue);
+        assert(ipv4ll_address);
 
         if (isempty(rvalue)) {
                 *ipv4ll_address = (struct in_addr) {};
